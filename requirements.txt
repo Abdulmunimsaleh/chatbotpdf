@@ -4,3 +4,4 @@ langchain==0.2.16
 huggingface-hub==0.14.1
 Gunicorn
 langchain-community
+weaviate
