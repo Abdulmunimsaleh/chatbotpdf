@@ -1,8 +1,9 @@
-Flask==2.3.2
-weaviate-client==4.7.1
-langchain==0.2.16
-huggingface-hub==0.14.1
-Gunicorn
-langchain-community
-sentence-transformers
+streamlit==1.25.0
+weaviate-client==3.18.0
+langchain==0.0.300
+huggingface-hub==0.17.2
+sentence-transformers==2.2.2
+pypdf==3.8.0
+rapidocr-onnxruntime==1.3.0
+
 
