@@ -27,7 +27,7 @@ embeddings = HuggingFaceEmbeddings(
 )
 
 # Initialize the document loader
-loader = PyPDFLoader("/path/to/your/pdf/RAG.pdf", extract_images=True)
+loader = PyPDFLoader("RAG.pdf", extract_images=True)
 pages = loader.load()
 
 # Split text into chunks
