@@ -2,9 +2,10 @@ streamlit
 weaviate-client
 langchain
 sentence-transformers
-PyPDF2
+pypdf
 huggingface-hub
 transformers
-python==3.4.10
+python
+protobuf==3.20.3
 
 
