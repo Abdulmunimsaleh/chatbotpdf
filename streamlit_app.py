@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+import streamlit as st
 import weaviate
 from langchain.vectorstores import Weaviate
 from langchain.embeddings import HuggingFaceEmbeddings
@@ -9,8 +9,9 @@ from langchain.schema.output_parser import StrOutputParser
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.document_loaders import PyPDFLoader
 
-# Initialize Flask app
-app = Flask(__name__)
+# Streamlit title and description
+st.title("RAG Question-Answering System")
+st.write("Ask a question related to the provided PDF document and get AI-based answers.")
 
 # Weaviate API setup
 WEAVIATE_API_KEY = "79JNO58NLZcKLRyfPcPQzpz5AhGwK3FlqOJ9"
@@ -27,7 +28,7 @@ embeddings = HuggingFaceEmbeddings(
 )
 
 # Initialize the document loader
-loader = PyPDFLoader("RAG.pdf", extract_images=True)
+loader = PyPDFLoader("C:/Users/Abdulmuniim/OneDrive/Desktop/CHATBOT/Data/RAG.pdf", extract_images=True)
 pages = loader.load()
 
 # Split text into chunks
@@ -38,7 +39,7 @@ docs = text_splitter.split_documents(pages)
 vector_db = Weaviate.from_documents(docs, embeddings, client=client, by_text=False)
 
 # Initialize Hugging Face Model
-huggingfacehub_api_token = "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"
+huggingfacehub_api_token = "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"
 model = HuggingFaceHub(
     huggingfacehub_api_token=huggingfacehub_api_token,
     repo_id="mistralai/Mistral-7B-Instruct-v0.3",
@@ -72,25 +73,17 @@ rag_chain = (
     | output_parser
 )
 
-# API route to ask a question
-@app.route('/ask', methods=['POST'])
-def ask_question():
-    # Get the user question from the request
-    data = request.json
-    question = data.get("question", "")
+# Streamlit input for the question
+question = st.text_input("Ask a question:")
 
-    # Check if the question is provided
-    if not question:
-        return jsonify({"error": "Please provide a valid question"}), 400
-
-    # Perform the RAG model query
-    try:
-        answer = rag_chain.invoke(question)
-        return jsonify({"answer": answer})
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-# Run the Flask app
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
-
+# Button to submit the question
+if st.button("Get Answer"):
+    if question:
+        try:
+            # Perform the RAG model query
+            answer = rag_chain.invoke(question)
+            st.write(f"**Answer**: {answer}")
+        except Exception as e:
+            st.error(f"Error: {str(e)}")
+    else:
+        st.warning("Please provide a valid question.")
