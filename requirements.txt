@@ -1,5 +1,5 @@
 Flask==2.3.2
 weaviate-client==3.2.1
-langchain==0.0.150
+langchain==0.2.16
 huggingface-hub==0.14.1
 Gunicorn
