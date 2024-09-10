@@ -9,6 +9,6 @@ langchain-community
 protobuf==3.20.3
 rapidocr-onnxruntime==1.3.23
 pip==24.1
-python3.11.4
+python3.11
 
 
