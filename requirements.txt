@@ -7,6 +7,6 @@ huggingface-hub
 transformers
 langchain-community
 protobuf==3.20.3
-rapidocr-onnxruntime==1.3.24
+rapidocr-onnxruntime==1.3.23
 
 
