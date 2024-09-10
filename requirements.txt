@@ -1,4 +1,4 @@
-streamlit
+streamlit==1.25.0
 weaviate-client
 langchain
 sentence-transformers
