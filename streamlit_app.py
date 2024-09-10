@@ -39,7 +39,7 @@ docs = text_splitter.split_documents(pages)
 vector_db = Weaviate.from_documents(docs, embeddings, client=client, by_text=False)
 
 # Initialize Hugging Face Model
-huggingfacehub_api_token = "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"
+huggingfacehub_api_token = "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"
 model = HuggingFaceHub(
     huggingfacehub_api_token=huggingfacehub_api_token,
     repo_id="mistralai/Mistral-7B-Instruct-v0.3",
