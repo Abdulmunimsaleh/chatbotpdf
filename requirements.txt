@@ -1,3 +1,4 @@
+python==3.10
 streamlit==1.25.0
 weaviate-client
 langchain
@@ -9,7 +10,7 @@ langchain-community
 protobuf==3.20.3
 rapidocr-onnxruntime==1.3.23
 pip==24.1
-python==3.10
+
 
 
 
