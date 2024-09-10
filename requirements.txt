@@ -7,6 +7,6 @@ huggingface-hub
 transformers
 langchain-community
 protobuf==3.20.3
-rapidocr-onnxruntime
+pip install rapidocr-onnxruntime
 
 
